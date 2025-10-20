@@ -48,7 +48,7 @@ function LoginContent() {
       const lowerCaseRole = role.toLowerCase();
       if (lowerCaseRole === "parent") router.replace("/parent");
       else if (lowerCaseRole === "teacher") router.replace("/teacher");
-      else router.replace("/student"); // Default or student goes to student dashboard
+      else router.replace("/home"); // Default or student goes to student dashboard
 
     } catch (err: any) {
       console.error("Login Error:", err.code, err.message); // Log error details
