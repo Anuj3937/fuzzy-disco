@@ -1,13 +1,15 @@
 'use client';
 
+// Keep existing imports
 import React, { useState, useEffect, Suspense } from 'react'; // Import Suspense
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { BookText, Loader2 } from 'lucide-react'; // Import Loader2 for Suspense fallback
+import { BookText, Loader2 } from 'lucide-react'; // Import Loader2
 import { useAuth } from '@/components/auth/AuthProvider';
 import { fetchQuizByLanguage, normalizeLang } from '@/lib/translateQuizLite';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import { T } from '@/components/T'; // Assuming T component exists for translation
 
 /* ---- Types ---- */
 type Option = { label: string; value: string };
@@ -47,7 +49,7 @@ function resolveUserGrade(user: any, params: URLSearchParams): Grade {
 /* ---- Inner Client Component to access searchParams ---- */
 function QuizContent() {
   const router = useRouter();
-  const params = useSearchParams(); // This hook causes the issue
+  const params = useSearchParams(); // Safe to use here now
   const { user } = useAuth();
 
   // Extract params logic remains the same
@@ -60,19 +62,27 @@ function QuizContent() {
 
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loadingError, setLoadingError] = useState<string | null>(null);
+  const [isLoadingQuiz, setIsLoadingQuiz] = useState(true); // Added loading state
 
-  // useEffect for loading quiz remains the same
+  // useEffect for loading quiz remains the same, but sets loading state
   useEffect(() => {
     async function loadQuiz() {
+      setIsLoadingQuiz(true); // Start loading
+      setLoadingError(null);
       try {
         const q = await fetchQuizByLanguage(selectedLang, userGrade, rawSubject, rawChapter, level);
+        if (q.length === 0) {
+            setLoadingError(`No '${level}' questions found for ${rawSubject} > ${rawChapter} in ${chosenLangLabel}. Try checking the subject/chapter name or selecting 'Easy' level.`);
+        }
         setQuestions(q);
       } catch (e: any) {
         setLoadingError(e?.message || 'Failed to load quiz data.');
+      } finally {
+          setIsLoadingQuiz(false); // Finish loading
       }
     }
     loadQuiz();
-  }, [selectedLang, userGrade, rawSubject, rawChapter, level]);
+  }, [selectedLang, userGrade, rawSubject, rawChapter, level, chosenLangLabel]); // Added chosenLangLabel dependency
 
   /* ---- UI State ---- */
   const [started, setStarted] = useState(false);
@@ -96,12 +106,12 @@ function QuizContent() {
     setAnswers(next);
   };
 
-  const progressPct = finished ? 100 : started && total > 0 ? (index / Math.max(total, 1)) * 100 : 0;
+  const progressPct = finished ? 100 : started && total > 0 ? ((index + 1) / Math.max(total, 1)) * 100 : 0; // Corrected progress
   const score = answers.reduce(
     (acc, a, i) => acc + (a === (questions[i]?.correctIndex ?? -1) ? 1 : 0),
     0
   );
-  const scoreTitle = score === 5 ? 'Excellent' : score >= 3 ? 'Nice work' : 'Could do better';
+  const scoreTitle = score === total ? 'Excellent' : score >= Math.ceil(total * 0.6) ? 'Nice work' : 'Could do better'; // Adjusted threshold
 
 
   // handleFinish function remains the same
@@ -116,11 +126,14 @@ function QuizContent() {
         class: userGrade,
         subject: rawSubject,
         chapter: rawChapter,
+        level: level, // Added level
         score,
-        language: selectedLang,
+        totalQuestions: total, // Added total
+        language: chosenLangLabel, // Store label
         timestamp: serverTimestamp(),
       });
     } catch (e: any) {
+      console.error("Error saving quiz attempt:", e); // Log error
       setSaveError(e?.message || 'Failed to save your attempt.');
     } finally {
       setSaving(false);
@@ -132,24 +145,47 @@ function QuizContent() {
   const pageBg = 'bg-gradient-to-br from-[#E8D8FF] via-[#F1E9FF] to-[#D8C6FF]';
   const cardBg = 'bg-white/85 backdrop-blur-xl border border-white/60 shadow-2xl';
 
-  // Return statement with JSX remains the same as your original QuizPage
+   // Handle loading state
+   if (isLoadingQuiz) {
+     return <LoadingQuiz />; // Use the Suspense fallback component
+   }
+
+   // Handle error state
+   if (loadingError && !questions.length) {
+       return (
+         <div className={`relative min-h-screen ${pageBg} text-gray-800 overflow-hidden flex items-center justify-center`}>
+            <div className={`rounded-3xl ${cardBg} p-8 max-w-lg text-center`}>
+                <h2 className="text-2xl font-bold text-rose-700 mb-2">Error Loading Quiz</h2>
+                <p className="text-rose-600 mb-6">{loadingError}</p>
+                <Button
+                    onClick={() => router.back()} // Go back to previous page
+                    className="bg-gradient-to-r from-[#9B87F5] to-[#7C6BF2] hover:brightness-110 text-white px-6 py-3 rounded-xl shadow-md"
+                >
+                    Go Back
+                </Button>
+            </div>
+         </div>
+       );
+   }
+
+   // Original JSX (ensure T component wraps text)
    return (
     <div className={`relative min-h-screen ${pageBg} text-gray-800 overflow-hidden`}>
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-10">
         <div className={`rounded-3xl ${cardBg} p-6 mb-6`}>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
             <div>
-              <h1 className="text-3xl font-extrabold text-[#6B5BBE]">Personalised Quiz</h1>
+              <h1 className="text-3xl font-extrabold text-[#6B5BBE]"><T>Personalised Quiz</T></h1>
               <p className="text-sm text-[#5A4DA8]/90 mt-1">
-                Subject: <span className="font-semibold">{rawSubject}</span> • Chapter{' '}
-                <span className="font-semibold">{rawChapter}</span> • Level{' '}
+                <T>Subject:</T> <span className="font-semibold">{rawSubject}</span> • <T>Chapter</T>{' '}
+                <span className="font-semibold">{rawChapter}</span> • <T>Level</T>{' '}
                 <span className="font-semibold">{level}</span>
               </p>
-              {loadingError && <p className="text-xs text-rose-700 mt-1">{loadingError}</p>}
+              {/* Removed loadingError display here as it's handled above */}
             </div>
             <div className="hidden md:flex items-center gap-2 text-[#6B5BBE]">
               <BookText className="h-6 w-6" />
-              <span className="font-medium">Question-by-question view</span>
+              <span className="font-medium"><T>Question-by-question view</T></span>
             </div>
           </div>
 
@@ -165,29 +201,30 @@ function QuizContent() {
         <div className={`rounded-3xl ${cardBg} p-8`}>
           {!started && !finished && (
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-[#6B5BBE] mb-2">Ready to begin?</h2>
+              <h2 className="text-2xl font-bold text-[#6B5BBE] mb-2"><T>Ready to begin?</T></h2>
               <p className="text-[#5A4DA8]/90 mb-6">
-                You’ll see one question at a time. Start with <b>Easy</b>. Use <i>Next</i> / <i>Previous</i> to navigate.
+                <T>You’ll see one question at a time. Use <i>Next</i> / <i>Previous</i> to navigate.</T>
               </p>
               <Button
                 className="bg-gradient-to-r from-[#9B87F5] to-[#7C6BF2] hover:brightness-110 text-white px-6 py-3 rounded-xl shadow-md"
                 onClick={() => setStarted(true)}
-                disabled={!questions.length}
+                disabled={!questions.length} // Disable if questions array is empty
               >
-                Start
+                <T>Start</T>
               </Button>
             </div>
           )}
 
-          {started && !finished && questions.length > 0 && (
+          {/* Added check for questions.length before rendering */}
+          {started && !finished && questions.length > 0 && index < questions.length && (
             <>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm font-medium text-[#5A4DA8]/90">
-                  Question <b>{index + 1}</b> of <b>{questions.length}</b>
+                  <T>Question</T> <b>{index + 1}</b> <T>of</T> <b>{questions.length}</b>
                 </span>
               </div>
 
-              <div className="rounded-2xl bg-gradient-to-br from-[#F4EEFF] to-[#ECE2FF] p-6 border border-[#E1D3FF] relative overflow-hidden">
+              <div className="rounded-2xl bg-gradient-to-br from-[#F4EEFF] to-[#ECE2FF] p-6 border border-[#E1D3FF] relative overflow-hidden min-h-[200px]"> {/* Added min-height */}
                 <h3 className="text-xl font-semibold text-[#4E3FA3] mb-4">{questions[index].text}</h3>
                 <ul className="space-y-3">
                   {questions[index].options.map((opt, i) => {
@@ -217,11 +254,12 @@ function QuizContent() {
               <div className="mt-6 flex items-center justify-between">
                 <Button
                   className={`bg-gradient-to-r from-[#9B87F5] to-[#7C6BF2] text-white rounded-xl ${
-                    index === 0 ? 'opacity-0 pointer-events-none' : ''
+                    index === 0 ? 'opacity-0 pointer-events-none' : '' // Keep invisible if first question
                   }`}
                   onClick={() => setIndex((i) => Math.max(0, i - 1))}
+                  disabled={index === 0} // Also disable functionally
                 >
-                  Previous
+                  <T>Previous</T>
                 </Button>
 
                 {index < questions.length - 1 ? (
@@ -229,7 +267,7 @@ function QuizContent() {
                     className="bg-gradient-to-r from-[#9B87F5] to-[#7C6BF2] hover:brightness-110 text-white rounded-xl"
                     onClick={() => setIndex((i) => Math.min(questions.length - 1, i + 1))}
                   >
-                    Next
+                    <T>Next</T>
                   </Button>
                 ) : (
                   <Button
@@ -237,7 +275,7 @@ function QuizContent() {
                     onClick={handleFinish}
                     disabled={saving}
                   >
-                    {saving ? 'Saving…' : 'Finish'}
+                    {saving ? <T>Saving…</T> : <T>Finish</T>}
                   </Button>
                 )}
               </div>
@@ -248,8 +286,9 @@ function QuizContent() {
             <div className="text-center">
               <h2 className="text-3xl font-extrabold text-[#6B5BBE] mb-3">{scoreTitle} 🎉</h2>
               <p className="text-[#5A4DA8]/90 mb-6">
-                Your score: <b>{score}</b> / {questions.length}
+                <T>Your score:</T> <b>{score}</b> / {questions.length}
               </p>
+              {saving && <Loader2 className="h-6 w-6 animate-spin mx-auto text-[#6B5BBE] mb-4" />}
               {saveError && (
                 <p className="mb-4 text-sm text-rose-700 bg-rose-50 border border-rose-200 rounded-md px-3 py-2 inline-block">
                   {saveError}
@@ -258,7 +297,7 @@ function QuizContent() {
 
               {/* --- Review Section (questions + chosen + correct) --- */}
               <div className="mt-8 text-left">
-                <h3 className="text-xl font-semibold text-[#4E3FA3] mb-4">Review</h3>
+                <h3 className="text-xl font-semibold text-[#4E3FA3] mb-4"><T>Review</T></h3>
                 <div className="space-y-4">
                   {questions.map((q, i) => {
                     const chosenIdx = answers[i];
@@ -283,27 +322,39 @@ function QuizContent() {
                                   : 'text-rose-700 bg-rose-50 border-rose-200'
                               }`}
                           >
-                            {isCorrect ? 'Correct' : 'Incorrect'}
+                            {isCorrect ? <T>Correct</T> : <T>Incorrect</T>}
                           </span>
                         </div>
 
                         <div className="grid gap-2">
                           <div className="text-sm">
-                            <span className="font-semibold text-[#6B5BBE]">Your answer: </span>
-                            <span className={`${isCorrect ? 'text-emerald-700' : 'text-[#4E3FA3]/90'}`}>
-                              {chosenOpt ? chosenOpt.label : 'Not answered'}
+                            <span className="font-semibold text-[#6B5BBE]"><T>Your answer:</T> </span>
+                            <span className={`${isCorrect ? 'text-emerald-700' : 'text-rose-700'}`}> {/* Indicate wrong answer */}
+                              {chosenOpt ? chosenOpt.label : <T>Not answered</T>}
                             </span>
                           </div>
-                          <div className="text-sm">
-                            <span className="font-semibold text-[#6B5BBE]">Correct answer: </span>
-                            <span className="text-[#4E3FA3]">
-                              {correctOpt?.label}
-                            </span>
-                          </div>
+                           {/* Show correct answer only if incorrect */}
+                          {!isCorrect && (
+                             <div className="text-sm">
+                                <span className="font-semibold text-[#6B5BBE]"><T>Correct answer:</T> </span>
+                                <span className="text-emerald-700"> {/* Always green */}
+                                  {correctOpt?.label}
+                                </span>
+                             </div>
+                           )}
                         </div>
                       </div>
                     );
                   })}
+                </div>
+                 {/* Back to Dashboard Button */}
+                <div className="mt-8 text-center">
+                    <Button
+                      onClick={() => router.push('/student')} // Navigate to student dashboard
+                      className="bg-gradient-to-r from-[#9B87F5] to-[#7C6BF2] hover:brightness-110 text-white px-6 py-3 rounded-xl shadow-md"
+                    >
+                      <T>Back to Dashboard</T>
+                    </Button>
                 </div>
               </div>
             </div>
@@ -313,6 +364,7 @@ function QuizContent() {
     </div>
   );
 }
+
 
 /* ---- Main Page Export with Suspense ---- */
 export default function QuizPage() {
@@ -329,7 +381,7 @@ function LoadingQuiz() {
   return (
     <div className="flex h-screen items-center justify-center bg-gradient-to-br from-[#E8D8FF] via-[#F1E9FF] to-[#D8C6FF]">
       <Loader2 className="h-12 w-12 animate-spin text-[#6B5BBE]" />
-      <p className="ml-4 text-lg font-medium text-[#5A4DA8]">Loading Quiz...</p>
+      <p className="ml-4 text-lg font-medium text-[#5A4DA8]"><T>Loading Quiz...</T></p>
     </div>
   );
 }
