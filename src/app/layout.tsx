@@ -40,8 +40,8 @@ export default function RootLayout({
           The duplicate manifest link that was here has been removed.
           The `metadata` object above now handles this automatically.
         */}
-        <link rel="icon" href="/icons/icon-192.png" />
-        <link rel="apple-touch-icon" href="/icons/icon-512.png" />
+        <link rel="icon" href="/icons/icon-192x192.png" />
+        <link rel="apple-touch-icon" href="/icons/icon-512x512.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
