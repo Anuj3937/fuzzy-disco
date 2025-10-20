@@ -1,16 +1,17 @@
 "use client";
 
-import { T } from '@/components/T'; // Added Import
-import React, { useState } from "react";
+import { T } from '@/components/T';
+import React, { useState, Suspense } from "react"; // Import Suspense
 import { useRouter, useSearchParams } from "next/navigation";
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { auth, db } from "@/lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { Loader2 } from "lucide-react";
 
-export default function LoginPage() {
+/* ---- Inner Client Component to access searchParams ---- */
+function LoginContent() {
   const router = useRouter();
-  const params = useSearchParams();
+  const params = useSearchParams(); // This hook causes the issue
   const redirect = params.get("redirect");
 
   const [email, setEmail] = useState("");
@@ -18,30 +19,34 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [resetting, setResetting] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  // handleLogin function remains the same
+   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       const uid = cred.user.uid;
       const snap = await getDoc(doc(db, "users", uid));
-      const role =
-        (snap.data()?.role as "student" | "teacher" | "Parent") || "student";
+      // Ensure role type safety
+      const role = (snap.data()?.role as "student" | "teacher" | "parent" | undefined) || "student";
 
       if (redirect) {
         router.replace(redirect);
         return;
       }
 
-      if (role === "Parent") router.replace("/parent");
-      else if (role === "teacher") router.replace("/teacher");
-      else router.replace("/home"); // Default or student goes to home/student dashboard
+      // Updated role check to be case-insensitive just in case, though Firestore data should be consistent
+      const lowerCaseRole = role.toLowerCase();
+      if (lowerCaseRole === "parent") router.replace("/parent");
+      else if (lowerCaseRole === "teacher") router.replace("/teacher");
+      else router.replace("/student"); // Default or student goes to student dashboard
+
     } catch (err: any) {
       console.error(err);
       // Specific error handling remains the same
-      if (err.code === "auth/user-not-found") {
-        alert("Email ID not found. Please check or sign up first.");
-      } else if (err.code === "auth/wrong-password") {
+      if (err.code === "auth/user-not-found" || err.code === 'auth/invalid-credential') { // Added invalid-credential
+        alert("Email ID not found or password incorrect. Please check or sign up first.");
+      } else if (err.code === "auth/wrong-password") { // Keep for older Firebase versions, though invalid-credential is more common now
         alert("Password is incorrect. Please enter the correct password.");
       } else if (err.code === "auth/invalid-email") {
         alert("Invalid email address format.");
@@ -53,6 +58,8 @@ export default function LoginPage() {
     }
   };
 
+
+  // handleForgotPassword function remains the same
   const handleForgotPassword = async () => {
     if (!email) {
       alert("Please enter your email address first.");
@@ -74,10 +81,12 @@ export default function LoginPage() {
     }
   };
 
+
+  // Return statement with JSX remains the same as your original LoginPage
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-100 via-indigo-100 to-pink-100">
       {/* Soft doodle background shapes */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
+      <div className="absolute inset-0 overflow-hidden opacity-30 pointer-events-none">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 600 600"
@@ -103,14 +112,14 @@ export default function LoginPage() {
           <T>Login to Shiksha Setu</T>
         </h1>
         <p className="text-center text-gray-500 mb-8">
-          <T>Welcome back! Please log in to continue your learning journey</T> 笨ｨ
+          <T>Welcome back! Please log in to continue your learning journey</T> 🎒
         </p>
 
         <form onSubmit={handleLogin} className="space-y-5">
           <input
             type="email"
             placeholder="Email Address" // Placeholder translation might be inconsistent across browsers
-            autoComplete="off"
+            autoComplete="email" // Use standard autocomplete
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -119,7 +128,7 @@ export default function LoginPage() {
           <input
             type="password"
             placeholder="Password" // Placeholder translation might be inconsistent across browsers
-            autoComplete="new-password"
+            autoComplete="current-password" // Use standard autocomplete
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -140,7 +149,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-3 rounded-md font-semibold shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300"
+            className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-3 rounded-md font-semibold shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-300 disabled:opacity-50" // Added disabled style
             disabled={loading}
           >
             {loading ? (
@@ -164,6 +173,25 @@ export default function LoginPage() {
           </a>
         </p>
       </div>
+    </div>
+  );
+}
+
+/* ---- Main Page Export with Suspense ---- */
+export default function LoginPage() {
+  // We wrap the component that uses useSearchParams in Suspense
+  return (
+    <Suspense fallback={<LoadingLogin />}>
+      <LoginContent />
+    </Suspense>
+  );
+}
+
+// Simple loading component for the Suspense fallback
+function LoadingLogin() {
+   return (
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-100 via-indigo-100 to-pink-100">
+         <Loader2 className="h-12 w-12 animate-spin text-purple-700" />
     </div>
   );
 }

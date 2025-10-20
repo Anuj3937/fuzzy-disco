@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react'; // Import Suspense
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { BookText } from 'lucide-react';
+import { BookText, Loader2 } from 'lucide-react'; // Import Loader2 for Suspense fallback
 import { useAuth } from '@/components/auth/AuthProvider';
 import { fetchQuizByLanguage, normalizeLang } from '@/lib/translateQuizLite';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -16,6 +16,7 @@ type Level = 'Easy';
 type Grade = '7' | '8' | '9';
 
 /* ---- Helper Functions ---- */
+// pickGradeFromString and resolveUserGrade remain the same
 function pickGradeFromString(raw: any): Grade | null {
   if (raw == null) return null;
   const s = String(raw).toLowerCase();
@@ -42,12 +43,14 @@ function resolveUserGrade(user: any, params: URLSearchParams): Grade {
   return fromUser || '9';
 }
 
-/* ---- Quiz Page ---- */
-export default function QuizPage() {
+
+/* ---- Inner Client Component to access searchParams ---- */
+function QuizContent() {
   const router = useRouter();
-  const params = useSearchParams();
+  const params = useSearchParams(); // This hook causes the issue
   const { user } = useAuth();
 
+  // Extract params logic remains the same
   const rawSubject = params.get('subject') || '';
   const rawChapter = params.get('chapter') || '';
   const level: Level = (params.get('level') as Level) || 'Easy';
@@ -58,6 +61,7 @@ export default function QuizPage() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loadingError, setLoadingError] = useState<string | null>(null);
 
+  // useEffect for loading quiz remains the same
   useEffect(() => {
     async function loadQuiz() {
       try {
@@ -78,11 +82,14 @@ export default function QuizPage() {
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
 
-  useEffect(() => {
+  // useEffect for answers initialization remains the same
+   useEffect(() => {
     if (questions.length > 0) setAnswers(Array(questions.length).fill(-1));
   }, [questions]);
 
-  const total = questions.length;
+
+  // Calculation logic (total, onSelect, progressPct, score, scoreTitle) remains the same
+   const total = questions.length;
   const onSelect = (optIdx: number) => {
     const next = [...answers];
     next[index] = optIdx;
@@ -96,6 +103,8 @@ export default function QuizPage() {
   );
   const scoreTitle = score === 5 ? 'Excellent' : score >= 3 ? 'Nice work' : 'Could do better';
 
+
+  // handleFinish function remains the same
   async function handleFinish() {
     setFinished(true);
     if (!user?.uid || questions.length === 0) return;
@@ -118,11 +127,13 @@ export default function QuizPage() {
     }
   }
 
+
   /* ---- UI ---- */
   const pageBg = 'bg-gradient-to-br from-[#E8D8FF] via-[#F1E9FF] to-[#D8C6FF]';
   const cardBg = 'bg-white/85 backdrop-blur-xl border border-white/60 shadow-2xl';
 
-  return (
+  // Return statement with JSX remains the same as your original QuizPage
+   return (
     <div className={`relative min-h-screen ${pageBg} text-gray-800 overflow-hidden`}>
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-10">
         <div className={`rounded-3xl ${cardBg} p-6 mb-6`}>
@@ -299,6 +310,26 @@ export default function QuizPage() {
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+/* ---- Main Page Export with Suspense ---- */
+export default function QuizPage() {
+  // We wrap the component that uses useSearchParams in Suspense
+  return (
+    <Suspense fallback={<LoadingQuiz />}>
+      <QuizContent />
+    </Suspense>
+  );
+}
+
+// Simple loading component for the Suspense fallback
+function LoadingQuiz() {
+  return (
+    <div className="flex h-screen items-center justify-center bg-gradient-to-br from-[#E8D8FF] via-[#F1E9FF] to-[#D8C6FF]">
+      <Loader2 className="h-12 w-12 animate-spin text-[#6B5BBE]" />
+      <p className="ml-4 text-lg font-medium text-[#5A4DA8]">Loading Quiz...</p>
     </div>
   );
 }
