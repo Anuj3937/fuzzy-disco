@@ -16,7 +16,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
   title: "Shiksha Setu",
   description: "A revolutionary learning platform for students, teachers, and parents.",
-  manifest: "/manifest.webmanifest",
+  manifest: "/manifest.webmanifest", // <-- This correctly links your manifest
   themeColor: "#4f46e5",
 };
 
@@ -36,7 +36,10 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#4f46e5" />
-        <link rel="manifest" href="/manifest.webmanifest" />
+        {/*
+          The duplicate manifest link that was here has been removed.
+          The `metadata` object above now handles this automatically.
+        */}
         <link rel="icon" href="/icons/icon-192.png" />
         <link rel="apple-touch-icon" href="/icons/icon-512.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
