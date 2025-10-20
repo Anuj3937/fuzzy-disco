@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Translated Document</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Arial, sans-serif; line-height: 1.6; max-width: 70ch; margin: 2rem auto; padding: 0 1rem; }
+    p { margin: 1em 0; }
+  </style>
+</head>
+<body>
+<p>POLYNOMIALS</p>
+<p>2.1 Introduction</p>
+<p>You have studied algebraic expressions, their addition, subtraction, multiplication and division in earlier classes. You also have studied how to factorise some algebraic expressions. You may recall the algebraic identities:</p>
+<p>\((x + y)^2 = x^2 + 2xy + y^2\)</p>
+<p>\((x - y)^2 = x^2 - 2xy + y^2\)</p>
+<p>and</p>
+<p>\(x^2 - y^2 = (x + y)(x - y)\)</p>
+<p>and their use in factorisation. In this chapter, we shall start our study with a particular type of algebraic expression, called polynomial, and the terminology related to it. We shall also study the Remainder Theorem and Factor Theorem and their use in the factorisation of polynomials. In addition to the above, we shall study some more algebraic identities and their use in factorisation and in evaluating some given expressions.</p>
+<p>2.2 Polynomials in One Variable</p>
+<p>Let us begin by recalling that a variable is denoted by a symbol that can take any real value. We use the letters \(x, y, z,\) etc. to denote variables. Notice that \(2x, 3x, -x, -\frac{1}{2}x\) are algebraic expressions. All these expressions are of the form (a constant) \(\times x\). Now suppose we want to write an expression which is (a constant) \(\times\) (a variable) and we do not know what the constant is. In such cases, we write the constant as \(a, b, c,\) etc. So the expression will be \(ax,\) say.</p>
+<p>However, there is a difference between a letter denoting a constant and a letter denoting a variable. The values of the constants remain the same throughout a particular situation, that is, the values of the constants do not change in a given problem, but the value of a variable can keep changing.</p>
+<p>Now, consider a square of side 3 units (see Fig. 2.1). What is its perimeter? You know that the perimeter of a square is the sum of the lengths of its four sides. Here, each side is 3 units. So, its perimeter is 4 × 3, i.e., 12 units. What will be the perimeter if each side of the square is 10 units? The perimeter is 4 × 10, i.e., 40 units. In case the length of each side is x units (see Fig. 2.2), the perimeter is given by 4x units. So, as the length of the side varies, the perimeter varies.</p>
+<p>Can you find the area of the square PQRS? It is x × x = x² square units. x² is an algebraic expression. You are also familiar with other algebraic expressions like 2x, x² + 2x, x³ − x² + 4x + 7. Note that, all the algebraic expressions we have considered so far have only whole numbers as the exponents of the variable. Expressions of this form are called polynomials in one variable. In the examples above, the variable is x. For instance, x³ − x² + 4x + 7 is a polynomial in x. Similarly, 3y² + 5y is a polynomial in the variable y and t² + 4 is a polynomial in the variable t.</p>
+<p>In the polynomial x² + 2x, the expressions x² and 2x are called the terms of the polynomial. Similarly, the polynomial 3y² + 5y + 7 has three terms, namely, 3y², 5y and 7. Can you write the terms of the polynomial −x³ + 4x² + 7x − 2? This polynomial has 4 terms, namely, −x³, 4x², 7x and −2.</p>
+<p>Each term of a polynomial has a coefficient. So, in −x³ + 4x² + 7x − 2, the coefficient of x³ is −1, the coefficient of x² is 4, the coefficient of x is 7 and −2 is the coefficient of x⁰ (Remember, x⁰ = 1). Do you know the coefficient of x in x² − x + 7? It is −1.</p>
+<p>2 is also a polynomial. In fact, 2, −5, 7, etc. are examples of constant polynomials. The constant polynomial 0 is called the zero polynomial. This plays a very important role in the collection of all polynomials, as you will see in the higher classes.</p>
+<p>Now, consider algebraic expressions such as x + 1/x, √x + 3 and ∛y + y². Do you know that you can write x + 1/x = x + x⁻¹? Here, the exponent of the second term, i.e., x⁻¹ is −1, which is not a whole number. So, this algebraic expression is not a polynomial.</p>
+<p>Again, √x + 3 can be written as x¹/² + 3. Here the exponent of x is 1/2, which is not a whole number. So, is √x + 3 a polynomial? No, it is not. What about ∛y + y²? It is also not a polynomial (Why?).</p>
+<p>Polynomials</p>
+<p>If the variable in a polynomial is x, we may denote the polynomial by p(x), or q(x), or r(x), etc. So, for example, we may write:</p>
+<p>p(x) = 2x² + 5x – 3</p>
+<p>q(x) = x³ –1</p>
+<p>r(y) = y³ + y + 1</p>
+<p>s(u) = 2 – u – u² + 6u⁵</p>
+<p>A polynomial can have any (finite) number of terms. For instance, x¹⁵⁰ + x¹⁴⁹ + ... + x² + x + 1 is a polynomial with 151 terms.</p>
+<p>Consider the polynomials 2x, 2, 5x³, –5x², y and u⁴. Do you see that each of these polynomials has only one term? Polynomials having only one term are called monomials (‘mono’ means ‘one’).</p>
+<p>Now observe each of the following polynomials:</p>
+<p>p(x) = x + 1, q(x) = x² – x, r(y) = y⁹ + 1, t(u) = u¹⁵ – u²</p>
+<p>How many terms are there in each of these? Each of these polynomials has only two terms. Polynomials having only two terms are called binomials (‘bi’ means ‘two’).</p>
+<p>Similarly, polynomials having only three terms are called trinomials (‘tri’ means ‘three’). Some examples of trinomials are</p>
+<p>p(x) = x + x² + π,</p>
+<p>q(x) = √2 + x – x²,</p>
+<p>r(u) = u + u² – 2,</p>
+<p>t(y) = y⁴ + y + 5.</p>
+<p>Now, look at the polynomial p(x) = 3x⁷ – 4x⁶ + x + 9. What is the term with the highest power of x? It is 3x⁷. The exponent of x in this term is 7. Similarly, in the polynomial q(y) = 5y⁶ – 4y² – 6, the term with the highest power of y is 5y⁶ and the exponent of y in this term is 6. We call the highest power of the variable in a polynomial as the degree of the polynomial. So, the degree of the polynomial 3x⁷ – 4x⁶ + x + 9 is 7 and the degree of the polynomial 5y⁶ – 4y² – 6 is 6. The degree of a non-zero constant polynomial is zero.</p>
+<p>Example 1: Find the degree of each of the polynomials given below:</p>
+<p>(i) x⁵ – x⁴ + 3</p>
+<p>(ii) 2 – y² – y³ + 2y⁸</p>
+<p>(iii) 2</p>
+<p>Solution: (i) The highest power of the variable is 5. So, the degree of the polynomial is 5.</p>
+<p>(ii) The highest power of the variable is 8. So, the degree of the polynomial is 8.</p>
+<p>(iii) The only term here is 2 which can be written as 2x⁰. So the exponent of x is 0. Therefore, the degree of the polynomial is 0.</p>
+<p>Now observe the polynomials \( p(x) = 4x + 5, \, q(y) = 2y, \, r(t) = t + \sqrt{2} \) and \( s(u) = 3 - u \). Do you see anything common among all of them? The degree of each of these polynomials is one. A polynomial of degree one is called a linear polynomial. Some more linear polynomials in one variable are \( 2x - 1, \, \sqrt{2} \, y + 1, \, 2 - u \). Now, try and find a linear polynomial in \( x \) with 3 terms? You would not be able to find it because a linear polynomial in \( x \) can have at most two terms. So, any linear polynomial in \( x \) will be of the form \( ax + b \), where \( a \) and \( b \) are constants and \( a \neq 0 \) (why?). Similarly, \( ay + b \) is a linear polynomial in \( y \).</p>
+<p>Now consider the polynomials:</p>
+<p>\[ 2x^2 + 5, \, 5x^2 + 3x + \pi, \, x^2 \text{ and } x^2 + \frac{2}{5} x \]</p>
+<p>Do you agree that they are all of degree two? A polynomial of degree two is called a quadratic polynomial. Some examples of a quadratic polynomial are \( 5 - y^2, \, 4y + 5y^2 \) and \( 6 - y - y^2 \). Can you write a quadratic polynomial in one variable with four different terms? You will find that a quadratic polynomial in one variable will have at most 3 terms. If you list a few more quadratic polynomials, you will find that any quadratic polynomial in \( x \) is of the form \( ax^2 + bx + c \), where \( a \neq 0 \) and \( a, \, b, \, c \) are constants. Similarly, quadratic polynomial in \( y \) will be of the form \( ay^2 + by + c \), provided \( a \neq 0 \) and \( a, \, b, \, c \) are constants.</p>
+<p>We call a polynomial of degree three a cubic polynomial. Some examples of a cubic polynomial in \( x \) are \( 4x^3, \, 2x^3 + 1, \, 5x^3 + x^2, \, 6x^3 - x, \, 6 - x^3, \, 2x^3 + 4x^2 + 6x + 7 \). How many terms do you think a cubic polynomial in one variable can have? It can have at most 4 terms. These may be written in the form \( ax^3 + bx^2 + cx + d \), where \( a \neq 0 \) and \( a, \, b, \, c \) and \( d \) are constants.</p>
+<p>Now, that you have seen what a polynomial of degree 1, degree 2, or degree 3 looks like, can you write down a polynomial in one variable of degree \( n \) for any natural number \( n \)? A polynomial in one variable \( x \) of degree \( n \) is an expression of the form</p>
+<p>\[ a_n x^n + a_{n-1} x^{n-1} + \ldots + a_1 x + a_0 \]</p>
+<p>where \( a_0, \, a_1, \, a_2, \ldots, a_n \) are constants and \( a_n \neq 0 \).</p>
+<p>In particular, if \( a_0 = a_1 = a_2 = a_3 = \ldots = a_n = 0 \) (all the constants are zero), we get the zero polynomial, which is denoted by 0. What is the degree of the zero polynomial? The degree of the zero polynomial is not defined.</p>
+<p>So far we have dealt with polynomials in one variable only. We can also have polynomials in more than one variable. For example, \( x^2 + y^2 + xyz \) (where variables are \( x, \, y \) and \( z \)) is a polynomial in three variables. Similarly \( p^2 + q^0 + r \) (where the variables are \( p, \, q \) and \( r \)), \( u^3 + v^2 \) (where the variables are \( u \) and \( v \)) are polynomials in three and two variables, respectively. You will be studying such polynomials in detail later.</p>
+<p>POLYNOMIALS</p>
+<p>EXERCISE 2.1</p>
+<p>1. Which of the following expressions are polynomials in one variable and which are not? State reasons for your answer.</p>
+<p>(i) \(4x^2 - 3x + 7\)  (ii) \(y^2 + \sqrt{2}\)  (iii) \(3\sqrt{t} + t\sqrt{2}\)  (iv) \(y + \frac{2}{y}\) </p>
+<p>(v) \(x^{10} + y^3 + t^{50}\)</p>
+<p>2. Write the coefficients of \(x^2\) in each of the following:</p>
+<p>(i) \(2 + x^2 + x\)  (ii) \(2 - x^2 + x^3\)  (iii) \(\frac{\pi}{2} x^2 + x\)  (iv) \(\sqrt{2} x \rightarrow 1\)</p>
+<p>3. Give one example each of a binomial of degree 35, and of a monomial of degree 100.</p>
+<p>4. Write the degree of each of the following polynomials:</p>
+<p>(i) \(5x^3 + 4x^2 + 7x\)  (ii) \(4 - y^2\)</p>
+<p>(iii) \(5t - \sqrt{7}\)  (iv) \(3\)</p>
+<p>5. Classify the following as linear, quadratic and cubic polynomials:</p>
+<p>(i) \(x^2 + x\)  (ii) \(x - x^3\)  (iii) \(y + y^2 + 4\)  (iv) \(1 + x\)</p>
+<p>(v) \(3t\)  (vi) \(r^2\)  (vii) \(7x^3\)</p>
+<p>2.3 Zeroes of a Polynomial</p>
+<p>Consider the polynomial \(p(x) = 5x^3 - 2x^2 + 3x - 2\).</p>
+<p>If we replace \(x\) by 1 everywhere in \(p(x)\), we get</p>
+<p>\[p(1) = 5 \times (1)^3 - 2 \times (1)^2 + 3 \times (1) - 2\]</p>
+<p>\[= 5 - 2 + 3 - 2\]</p>
+<p>\[= 4\]</p>
+<p>So, we say that the value of \(p(x)\) at \(x = 1\) is 4.</p>
+<p>Similarly,</p>
+<p>\[p(0) = 5(0)^3 - 2(0)^2 + 3(0) - 2\]</p>
+<p>\[= -2\]</p>
+<p>Can you find \(p(-1)\)?</p>
+<p>Example 2: Find the value of each of the following polynomials at the indicated value of variables:</p>
+<p>(i) \(p(x) = 5x^2 - 3x + 7\) at \(x = 1\).</p>
+<p>(ii) \(q(y) = 3y^3 - 4y + \sqrt{11}\) at \(y = 2\).</p>
+<p>(iii) \(p(t) = 4t^4 + 5t^3 - t^2 + 6\) at \(t = a\).</p>
+<p>Solution: (i) \( p(x) = 5x^2 - 3x + 7 \)</p>
+<p>The value of the polynomial \( p(x) \) at \( x = 1 \) is given by</p>
+<p>\[<br>p(1) = 5(1)^2 - 3(1) + 7 = 5 - 3 + 7 = 9<br>\]</p>
+<p>(ii) \( q(y) = 3y^3 - 4y + \sqrt{11} \)</p>
+<p>The value of the polynomial \( q(y) \) at \( y = 2 \) is given by</p>
+<p>\[<br>q(2) = 3(2)^3 - 4(2) + \sqrt{11} = 24 - 8 + \sqrt{11} = 16 + \sqrt{11}<br>\]</p>
+<p>(iii) \( p(t) = 4t^4 + 5t^3 - t^2 + 6 \)</p>
+<p>The value of the polynomial \( p(t) \) at \( t = a \) is given by</p>
+<p>\[<br>p(a) = 4a^4 + 5a^3 - a^2 + 6<br>\]</p>
+<p>Now, consider the polynomial \( p(x) = x - 1 \).</p>
+<p>What is \( p(1) \)? Note that: \( p(1) = 1 - 1 = 0 \).</p>
+<p>As \( p(1) = 0 \), we say that 1 is a zero of the polynomial \( p(x) \).</p>
+<p>Similarly, you can check that 2 is a zero of \( q(x) \), where \( q(x) = x - 2 \).</p>
+<p>In general, we say that a zero of a polynomial \( p(x) \) is a number \( c \) such that \( p(c) = 0 \).</p>
+<p>You must have observed that the zero of the polynomial \( x - 1 \) is obtained by equating it to 0, i.e., \( x - 1 = 0 \), which gives \( x = 1 \). We say \( p(x) = 0 \) is a polynomial equation and 1 is the root of the polynomial equation \( p(x) = 0 \). So we say 1 is the zero of the polynomial \( x - 1 \), or a root of the polynomial equation \( x - 1 = 0 \).</p>
+<p>Now, consider the constant polynomial 5. Can you tell what its zero is? It has no zero because replacing \( x \) by any number in \( 5x^0 \) still gives us 5. In fact, a non-zero constant polynomial has no zero. What about the zeroes of the zero polynomial? By convention, every real number is a zero of the zero polynomial.</p>
+<p>Example 3: Check whether –2 and 2 are zeroes of the polynomial \( x + 2 \).</p>
+<p>Solution: Let \( p(x) = x + 2 \).</p>
+<p>Then \( p(2) = 2 + 2 = 4 \), \( p(-2) = -2 + 2 = 0 \)</p>
+<p>Therefore, –2 is a zero of the polynomial \( x + 2 \), but 2 is not.</p>
+<p>Example 4: Find a zero of the polynomial \( p(x) = 2x + 1 \).</p>
+<p>Solution: Finding a zero of \( p(x) \), is the same as solving the equation</p>
+<p>\[<br>p(x) = 0<br>\]</p>
+<p>Polynomials</p>
+<p>Now, \(2x + 1 = 0\) gives us \(x = -\frac{1}{2}\)</p>
+<p>So, \(-\frac{1}{2}\) is a zero of the polynomial \(2x + 1\).</p>
+<p>Now, if \(p(x) = ax + b, a \neq 0\), is a linear polynomial, how can we find a zero of \(p(x)\)? Example 4 may have given you some idea. Finding a zero of the polynomial \(p(x)\), amounts to solving the polynomial equation \(p(x) = 0\).</p>
+<p>Now, \(p(x) = 0\) means \(ax + b = 0, a \neq 0\)</p>
+<p>So, \(ax = -b\)</p>
+<p>i.e., \(x = -\frac{b}{a}\).</p>
+<p>So, \(x = -\frac{b}{a}\) is the only zero of \(p(x)\), i.e., a linear polynomial has one and only one zero.</p>
+<p>Now we can say that 1 is the zero of \(x - 1\), and \(-2\) is the zero of \(x + 2\).</p>
+<p>Example 5: Verify whether 2 and 0 are zeroes of the polynomial \(x^2 - 2x\).</p>
+<p>Solution: Let \(p(x) = x^2 - 2x\)</p>
+<p>Then \(p(2) = 2^2 - 4 = 4 - 4 = 0\)</p>
+<p>and \(p(0) = 0 - 0 = 0\)</p>
+<p>Hence, 2 and 0 are both zeroes of the polynomial \(x^2 - 2x\).</p>
+<p>Let us now list our observations:</p>
+<p>(i) A zero of a polynomial need not be 0.</p>
+<p>(ii) 0 may be a zero of a polynomial.</p>
+<p>(iii) Every linear polynomial has one and only one zero.</p>
+<p>(iv) A polynomial can have more than one zero.</p>
+<p>Exercise 2.2</p>
+<p>1. Find the value of the polynomial \(5x - 4x^2 + 3\) at</p>
+<p>   (i) \(x = 0\)  (ii) \(x = -1\)  (iii) \(x = 2\)</p>
+<p>2. Find \(p(0), p(1)\) and \(p(2)\) for each of the following polynomials:</p>
+<p>   (i) \(p(y) = y^2 - y + 1\)  (ii) \(p(t) = 2 + t + 2t^2 - t^3\)</p>
+<p>   (iii) \(p(x) = x^3\)  (iv) \(p(x) = (x - 1)(x + 1)\)</p>
+<p>3. Verify whether the following are zeroes of the polynomial, indicated against them.</p>
+<p>(i) \( p(x) = 3x + 1, \, x = -\frac{1}{3} \)</p>
+<p>(ii) \( p(x) = 5x - \pi, \, x = \frac{4}{5} \)</p>
+<p>(iii) \( p(x) = x^2 - 1, \, x = 1, -1 \)</p>
+<p>(iv) \( p(x) = (x + 1)(x - 2), \, x = -1, 2 \)</p>
+<p>(v) \( p(x) = x^2, \, x = 0 \)</p>
+<p>(vi) \( p(x) = lx + m, \, x = -\frac{m}{l} \)</p>
+<p>(vii) \( p(x) = 3x^2 - 1, \, x = -\frac{1}{\sqrt{3}}, \frac{2}{\sqrt{3}} \)</p>
+<p>(viii) \( p(x) = 2x + 1, \, x = \frac{1}{2} \)</p>
+<p>4. Find the zero of the polynomial in each of the following cases:</p>
+<p>(i) \( p(x) = x + 5 \)</p>
+<p>(ii) \( p(x) = x - 5 \)</p>
+<p>(iii) \( p(x) = 2x + 5 \)</p>
+<p>(iv) \( p(x) = 3x - 2 \)</p>
+<p>(v) \( p(x) = 3x \)</p>
+<p>(vi) \( p(x) = ax, \, a \neq 0 \)</p>
+<p>(vii) \( p(x) = cx + d, \, c \neq 0, \, c, \, d \) are real numbers.</p>
+<p>2.4 Factorisation of Polynomials</p>
+<p>Let us now look at the situation of Example 10 above more closely. It tells us that since the remainder, \( q\left(-\frac{1}{2}\right) = 0 \), \( (2t + 1) \) is a factor of \( q(t) \), i.e., \( q(t) = (2t + 1) g(t) \) for some polynomial \( g(t) \). This is a particular case of the following theorem.</p>
+<p>Factor Theorem: If \( p(x) \) is a polynomial of degree \( n \geq 1 \) and \( a \) is any real number, then (i) \( x - a \) is a factor of \( p(x) \), if \( p(a) = 0 \), and (ii) \( p(a) = 0 \), if \( x - a \) is a factor of \( p(x) \).</p>
+<p>Proof: By the Remainder Theorem, \( p(x) = (x - a) q(x) + p(a) \).</p>
+<p>(i) If \( p(a) = 0 \), then \( p(x) = (x - a) q(x) \), which shows that \( x - a \) is a factor of \( p(x) \).</p>
+<p>(ii) Since \( x - a \) is a factor of \( p(x) \), \( p(x) = (x - a) g(x) \) for some polynomial \( g(x) \).</p>
+<p>In this case, \( p(a) = (a - a) g(a) = 0 \).</p>
+<p>Example 6: Examine whether \( x + 2 \) is a factor of \( x^3 + 3x^2 + 5x + 6 \) and of \( 2x + 4 \).</p>
+<p>Solution: The zero of \( x + 2 \) is \(-2\). Let \( p(x) = x^3 + 3x^2 + 5x + 6 \) and \( s(x) = 2x + 4 \)</p>
+<p>Then,</p>
+<p>\( p(-2) = (-2)^3 + 3(-2)^2 + 5(-2) + 6 \)</p>
+<p>\[<br>= -8 + 12 - 10 + 6<br>\]</p>
+<p>\[<br>= 0<br>\]</p>
+<p>Polynomials</p>
+<p>So, by the Factor Theorem, x + 2 is a factor of x³ + 3x² + 5x + 6.</p>
+<p>Again,  <br>s(−2) = 2(−2) + 4 = 0</p>
+<p>So, x + 2 is a factor of 2x + 4. In fact, you can check this without applying the Factor Theorem, since 2x + 4 = 2(x + 2).</p>
+<p>Example 7: Find the value of k, if x − 1 is a factor of 4x³ + 3x² − 4x + k.</p>
+<p>Solution: As x − 1 is a factor of p(x) = 4x³ + 3x² − 4x + k, p(1) = 0</p>
+<p>Now,  <br>p(1) = 4(1)³ + 3(1)² − 4(1) + k</p>
+<p>So,  <br>4 + 3 − 4 + k = 0  <br>i.e., k = −3</p>
+<p>We will now use the Factor Theorem to factorise some polynomials of degree 2 and 3. You are already familiar with the factorisation of a quadratic polynomial like x² + lx + m. You had factorised it by splitting the middle term lx as ax + bx so that ab = m. Then x² + lx + m = (x + a) (x + b). We shall now try to factorise quadratic polynomials of the type ax² + bx + c, where a ≠ 0 and a, b, c are constants.</p>
+<p>Factorisation of the polynomial ax² + bx + c by splitting the middle term is as follows:</p>
+<p>Let its factors be (px + q) and (rx + s). Then</p>
+<p>ax² + bx + c = (px + q) (rx + s) = pr x² + (ps + qr) x + qs</p>
+<p>Comparing the coefficients of x², we get a = pr.</p>
+<p>Similarly, comparing the coefficients of x, we get b = ps + qr.</p>
+<p>And, on comparing the constant terms, we get c = qs.</p>
+<p>This shows us that b is the sum of two numbers ps and qr, whose product is (ps)(qr) = (pr)(qs) = ac.</p>
+<p>Therefore, to factorise ax² + bx + c, we have to write b as the sum of two numbers whose product is ac. This will be clear from Example 13.</p>
+<p>Example 8: Factorise 6x² + 17x + 5 by splitting the middle term, and by using the Factor Theorem.</p>
+<p>Solution 1: (By splitting method): If we can find two numbers p and q such that p + q = 17 and pq = 6 × 5 = 30, then we can get the factors.</p>
+<p>So, let us look for the pairs of factors of 30. Some are 1 and 30, 2 and 15, 3 and 10, 5 and 6. Of these pairs, 2 and 15 will give us p + q = 17.</p>
+<p>So, 6x² + 17x + 5 = 6x² + (2 + 15)x + 5  <br>= 6x² + 2x + 15x + 5  <br>= 2x(3x + 1) + 5(3x + 1)  <br>= (3x + 1) (2x + 5)  </p>
+<p>Solution 2: (Using the Factor Theorem)  </p>
+<p>6x² + 17x + 5 = 6 \(\left(x² + \frac{17}{6}x + \frac{5}{6}\right)\) = 6 p(x), say. If a and b are the zeroes of p(x), then  </p>
+<p>6x² + 17x + 5 = 6(x – a)(x – b). So, ab = \(-\frac{5}{6}\). Let us look at some possibilities for a and b. They could be \(\pm \frac{1}{2}, \pm \frac{1}{3}, \pm \frac{5}{3}, \pm \frac{5}{2}, \pm 1\). Now, p\(\left(\frac{1}{2}\right) = \frac{1}{4} + \frac{17}{6}\left(\frac{1}{2}\right) + \frac{5}{6} \neq 0\). But  </p>
+<p>p\(\left(-\frac{1}{3}\right) = 0\). So, \(\left(x + \frac{1}{3}\right)\) is a factor of p(x). Similarly, by trial, you can find that  </p>
+<p>\(\left(x + \frac{5}{2}\right)\) is a factor of p(x).  </p>
+<p>Therefore,  </p>
+<p>6x² + 17x + 5 = 6 \(\left(x + \frac{1}{3}\right)\left(x + \frac{5}{2}\right)\)  <br>= 6 \(\left(\frac{3x + 1}{3}\right)\left(\frac{2x + 5}{2}\right)\)  <br>= (3x + 1) (2x + 5)  </p>
+<p>For the example above, the use of the splitting method appears more efficient. However, let us consider another example.  </p>
+<p>Example 9: Factorise y² – 5y + 6 by using the Factor Theorem.  </p>
+<p>Solution: Let p(y) = y² – 5y + 6. Now, if p(y) = (y – a) (y – b), you know that the constant term will be ab. So, ab = 6. So, to look for the factors of p(y), we look at the factors of 6.  </p>
+<p>The factors of 6 are 1, 2 and 3.  </p>
+<p>Now, p(2) = 2² – (5 × 2) + 6 = 0  </p>
+<p>So, y – 2 is a factor of p(y).</p>
+<p>Polynomials</p>
+<p>Also, \( p(3) = 3^2 - (5 \times 3) + 6 = 0 \)</p>
+<p>So, \( y - 3 \) is also a factor of \( y^2 - 5y + 6 \).</p>
+<p>Therefore, \( y^2 - 5y + 6 = (y - 2)(y - 3) \)</p>
+<p>Note that \( y^2 - 5y + 6 \) can also be factorised by splitting the middle term \(-5y\).</p>
+<p>Now, let us consider factorising cubic polynomials. Here, the splitting method will not be appropriate to start with. We need to find at least one factor first, as you will see in the following example.</p>
+<p>Example 10: Factorise \( x^3 - 23x^2 + 142x - 120 \).</p>
+<p>Solution: Let \( p(x) = x^3 - 23x^2 + 142x - 120 \)</p>
+<p>We shall now look for all the factors of \(-120\). Some of these are \(\pm 1, \pm 2, \pm 3, \pm 4, \pm 5, \pm 6, \pm 8, \pm 10, \pm 12, \pm 15, \pm 20, \pm 24, \pm 30, \pm 60\).</p>
+<p>By trial, we find that \( p(1) = 0 \). So \( x - 1 \) is a factor of \( p(x) \).</p>
+<p>Now we see that </p>
+<p>\( x^3 - 23x^2 + 142x - 120 = x^3 - x^2 - 22x^2 + 22x + 142x - 120 \)</p>
+<p>\( = x^2(x - 1) - 22x(x - 1) + 120(x - 1) \) (Why?)</p>
+<p>\( = (x - 1) (x^2 - 22x + 120) \) [Taking \( (x - 1) \) common]</p>
+<p>We could have also got this by dividing \( p(x) \) by \( x - 1 \).</p>
+<p>Now \( x^2 - 22x + 120 \) can be factorised either by splitting the middle term or by using the Factor theorem. By splitting the middle term, we have:</p>
+<p>\( x^2 - 22x + 120 = x^2 - 12x - 10x + 120 \)</p>
+<p>\( = x(x - 12) - 10(x - 12) \)</p>
+<p>\( = (x - 12) (x - 10) \)</p>
+<p>So,</p>
+<p>\( x^3 - 23x^2 - 142x - 120 = (x - 1)(x - 10)(x - 12) \)</p>
+<p>Exercise 2.3</p>
+<p>1. Determine which of the following polynomials has \( (x + 1) \) a factor:<br>   (i) \( x^3 + x^2 + x + 1 \)<br>   (ii) \( x^4 + x^3 + x^2 + x + 1 \)<br>   (iii) \( x^4 + 3x^3 + 3x^2 + x + 1 \)<br>   (iv) \( x^3 - x^2 - \left(2 + \sqrt{2}\right)x + \sqrt{2} \)</p>
+<p>2. Use the Factor Theorem to determine whether \( g(x) \) is a factor of \( p(x) \) in each of the following cases:<br>   (i) \( p(x) = 2x^3 + x^2 - 2x - 1, g(x) = x + 1 \)</p>
+<p>3. Find the value of k, if x - 1 is a factor of p(x) in each of the following cases:<br>(i) \( p(x) = x^2 + x + k \)<br>(ii) \( p(x) = 2x^2 + kx + \sqrt{2} \)<br>(iii) \( p(x) = kx^2 - \sqrt{2}x + 1 \)<br>(iv) \( p(x) = kx^2 - 3x + k \)</p>
+<p>4. Factorise:<br>(i) \( 12x^2 - 7x + 1 \)<br>(ii) \( 2x^2 + 7x + 3 \)<br>(iii) \( 6x^2 + 5x - 6 \)<br>(iv) \( 3x^2 - x - 4 \)</p>
+<p>5. Factorise:<br>(i) \( x^3 - 2x^2 - x + 2 \)<br>(ii) \( x^3 - 3x^2 - 9x - 5 \)<br>(iii) \( x^3 + 13x^2 + 32x + 20 \)<br>(iv) \( 2y^3 + y^2 - 2y - 1 \)</p>
+<p>2.5 Algebraic Identities</p>
+<p>From your earlier classes, you may recall that an algebraic identity is an algebraic equation that is true for all values of the variables occurring in it. You have studied the following algebraic identities in earlier classes:</p>
+<p>Identity I: \( (x + y)^2 = x^2 + 2xy + y^2 \)</p>
+<p>Identity II: \( (x - y)^2 = x^2 - 2xy + y^2 \)</p>
+<p>Identity III: \( x^2 - y^2 = (x + y)(x - y) \)</p>
+<p>Identity IV: \( (x + a)(x + b) = x^2 + (a + b)x + ab \)</p>
+<p>You must have also used some of these algebraic identities to factorise the algebraic expressions. You can also see their utility in computations.</p>
+<p>Example 11: Find the following products using appropriate identities:<br>(i) \( (x + 3)(x + 3) \)<br>(ii) \( (x - 3)(x + 5) \)</p>
+<p>Solution: (i) Here we can use Identity I: \( (x + y)^2 = x^2 + 2xy + y^2 \). Putting y = 3 in it, we get</p>
+<p>\( (x + 3)(x + 3) = (x + 3)^2 = x^2 + 2(x)(3) + (3)^2 \)<br>\( = x^2 + 6x + 9 \)</p>
+<p>(ii) Using Identity IV above, i.e., \( (x + a)(x + b) = x^2 + (a + b)x + ab \), we have</p>
+<p>\( (x - 3)(x + 5) = x^2 + (-3 + 5)x + (-3)(5) \)<br>\( = x^2 + 2x - 15 \)</p>
+<p>Polynomials</p>
+<p>Example 12: Evaluate 105 × 106 without multiplying directly.</p>
+<p>Solution: 105 × 106 = (100 + 5) × (100 + 6)<br>= (100)² + (5 + 6)(100) + (5 × 6), using Identity IV<br>= 10000 + 1100 + 30<br>= 11130</p>
+<p>You have seen some uses of the identities listed above in finding the product of some given expressions. These identities are useful in factorisation of algebraic expressions also, as you can see in the following examples.</p>
+<p>Example 13: Factorise:</p>
+<p>(i) 49a² + 70ab + 25b² (ii) \(\frac{25}{4}\) x² − \(\frac{y²}{9}\)</p>
+<p>Solution: (i) Here you can see that</p>
+<p>49a² = (7a)², 25b² = (5b)², 70ab = 2(7a)(5b)</p>
+<p>Comparing the given expression with x² + 2xy + y², we observe that x = 7a and y = 5b.</p>
+<p>Using Identity I, we get</p>
+<p>49a² + 70ab + 25b² = (7a + 5b)² = (7a + 5b)(7a + 5b)</p>
+<p>(ii) We have \(\frac{25}{4}\) x² − \(\frac{y²}{9}\) = \(\left(\frac{5}{2} x\right)² - \left(\frac{y}{3}\right)²\)</p>
+<p>Now comparing it with Identity III, we get</p>
+<p>\(\frac{25}{4}\) x² − \(\frac{y²}{9}\) = \(\left(\frac{5}{2} x\right)² - \left(\frac{y}{3}\right)²\)</p>
+<p>= \(\left(\frac{5}{2} x + \frac{y}{3}\right)\left(\frac{5}{2} x - \frac{y}{3}\right)\)</p>
+<p>So far, all our identities involved products of binomials. Let us now extend the Identity I to a trinomial x + y + z. We shall compute (x + y + z)² by using Identity I.</p>
+<p>Let x + y = t. Then,</p>
+<p>(x + y + z)² = (t + z)²<br>= t² + 2tz + t² (Using Identity I)<br>= (x + y)² + 2(x + y)z + z² (Substituting the value of t)</p>
+<p>= x² + 2xy + y² + 2xz + 2yz + z²  <br>= x² + y² + z² + 2xy + 2yz + 2zx  </p>
+<p>So, we get the following identity:</p>
+<p>Identity V: (x + y + z)² = x² + y² + z² + 2xy + 2yz + 2zx</p>
+<p>Remark: We call the right-hand side expression the expanded form of the left-hand side expression. Note that the expansion of (x + y + z)² consists of three square terms and three product terms.</p>
+<p>Example 14: Write (3a + 4b + 5c)² in expanded form.</p>
+<p>Solution: Comparing the given expression with (x + y + z)², we find that</p>
+<p>x = 3a, y = 4b and z = 5c.</p>
+<p>Therefore, using Identity V, we have</p>
+<p>(3a + 4b + 5c)² = (3a)² + (4b)² + (5c)² + 2(3a)(4b) + 2(4b)(5c) + 2(5c)(3a)  <br>= 9a² + 16b² + 25c² + 24ab + 40bc + 30ac</p>
+<p>Example 15: Expand (4a – 2b – 3c)².</p>
+<p>Solution: Using Identity V, we have</p>
+<p>(4a – 2b – 3c)² = [4a + (–2b) + (–3c)]²  <br>= (4a)² + (–2b)² + (–3c)² + 2(4a)(–2b) + 2(–2b)(–3c) + 2(–3c)(4a)  <br>= 16a² + 4b² + 9c² – 16ab + 12bc – 24ac</p>
+<p>Example 16: Factorise 4x² + y² + z² – 4xy – 2yz + 4xz.</p>
+<p>Solution: We have 4x² + y² + z² – 4xy – 2yz + 4xz = (2x)² + (–y)² + (z)² + 2(2x)(–y)  <br>+ 2(–y)(z) + 2(2x)(z)  <br>= [2x + (–y) + z]² (Using Identity V)  <br>= (2x – y + z)² = (2x – y + z)(2x – y + z)</p>
+<p>So far, we have dealt with identities involving second degree terms. Now let us extend Identity I to compute (x + y)³. We have:</p>
+<p>(x + y)³ = (x + y) (x + y)²  <br>= (x + y)(x² + 2xy + y²)  <br>= x(x² + 2xy + y²) + y(x² + 2xy + y²)  <br>= x³ + 2x²y + xy² + x²y + 2xy² + y³  <br>= x³ + 3x²y + 3xy² + y³  <br>= x³ + y³ + 3xy(x + y)</p>
+<p>Polynomials</p>
+<p>So, we get the following identity:</p>
+<p>Identity VI: (x + y)³ = x³ + y³ + 3xy (x + y)</p>
+<p>Also, by replacing y by -y in the Identity VI, we get</p>
+<p>Identity VII: (x − y)³ = x³ − y³ − 3xy(x − y)<br>= x³ − 3x²y + 3xy² − y³</p>
+<p>Example 17: Write the following cubes in the expanded form:<br>(i) (3a + 4b)³ (ii) (5p − 3q)³</p>
+<p>Solution: (i) Comparing the given expression with (x + y)³, we find that<br>x = 3a and y = 4b.</p>
+<p>So, using Identity VI, we have:</p>
+<p>(3a + 4b)³ = (3a)³ + (4b)³ + 3(3a)(4b)(3a + 4b)<br>= 27a³ + 64b³ + 108a²b + 144ab²</p>
+<p>(ii) Comparing the given expression with (x − y)³, we find that<br>x = 5p, y = 3q.</p>
+<p>So, using Identity VII, we have:</p>
+<p>(5p − 3q)³ = (5p)³ − (3q)³ − 3(5p)(3q)(5p − 3q)<br>= 125p³ − 27q³ − 225p²q + 135pq²</p>
+<p>Example 18: Evaluate each of the following using suitable identities:<br>(i) (104)³ (ii) (999)³</p>
+<p>Solution: (i) We have</p>
+<p>(104)³ = (100 + 4)³<br>= (100)³ + (4)³ + 3(100)(4)(100 + 4)<br>(Using Identity VI)<br>= 1000000 + 64 + 124800<br>= 1124864</p>
+<p>(ii) We have</p>
+<p>(999)³ = (1000 − 1)³<br>= (1000)³ − (1)³ − 3(1000)(1)(1000 − 1)<br>(Using Identity VII)<br>= 1000000000 − 1 − 2997000<br>= 997002999</p>
+<p>Reprint 2025-26</p>
+<p>Example 19: Factorize \(8x^3 + 27y^3 + 36x^2y + 54xy^2\)</p>
+<p>Solution: The given expression can be written as</p>
+<p>\((2x)^3 + (3y)^3 + 3(4x^2)(3y) + 3(2x)(9y^2)\)</p>
+<p>= \((2x)^3 + (3y)^3 + 3(2x)^2(3y) + 3(2x)(3y)^2\)</p>
+<p>= \((2x + 3y)^3\) (Using Identity VI)</p>
+<p>= \((2x + 3y)(2x + 3y)(2x + 3y)\)</p>
+<p>Now consider \((x + y + z)(x^2 + y^2 + z^2 - xy - yz - zx)\)</p>
+<p>On expanding, we get the product as</p>
+<p>\(x(x^2 + y^2 + z^2 - xy - yz - zx) + y(x^2 + y^2 + z^2 - xy - yz - zx)\)</p>
+<p>+ \(z(x^2 + y^2 + z^2 - xy - yz - zx) = x^3 + xy^2 + xz^2 - x^2y - xyz - zx^2 + x^2y\)</p>
+<p>+ \(y^3 + yz^2 - xy^2 - yz^2 - xyz + xz^2 + yz^2 + z^3 - xyz - yz^2 - xz^2\)</p>
+<p>= \(x^3 + y^3 + z^3 - 3xyz\) (On simplification)</p>
+<p>So, we obtain the following identity:</p>
+<p>Identity VIII: \(x^3 + y^3 + z^3 - 3xyz = (x + y + z)(x^2 + y^2 + z^2 - xy - yz - zx)\)</p>
+<p>Example 20: Factorize: \(8x^3 + y^3 + 27z^3 - 18xyz\)</p>
+<p>Solution: Here, we have</p>
+<p>\(8x^3 + y^3 + 27z^3 - 18xyz\)</p>
+<p>= \((2x)^3 + y^3 + (3z)^3 - 3(2x)(y)(3z)\)</p>
+<p>= \((2x + y + 3z)[(2x)^2 + y^2 + (3z)^2 - (2x)(y) - (y)(3z) - (2x)(3z)]\)</p>
+<p>= \((2x + y + 3z)(4x^2 + y^2 + 9z^2 - 2xy - 3yz - 6xz)\)</p>
+<p>EXERCISE 2.4</p>
+<p>1. Use suitable identities to find the following products:</p>
+<p>   (i) \((x + 4)(x + 10)\) </p>
+<p>   (ii) \((x + 8)(x - 10)\) </p>
+<p>   (iii) \((3x + 4)(3x - 5)\)</p>
+<p>   (iv) \((x^2 + \frac{3}{2})(y^2 - \frac{3}{2})\)</p>
+<p>   (v) \((3 - 2x)(3 + 2x)\)</p>
+<p>2. Evaluate the following products without multiplying directly:</p>
+<p>   (i) \(103 \times 107\)</p>
+<p>   (ii) \(95 \times 96\)</p>
+<p>   (iii) \(104 \times 96\)</p>
+<p>3. Factorise the following using appropriate identities:</p>
+<p>   (i) \(9x^2 + 6xy + y^2\)</p>
+<p>   (ii) \(4y^2 - 4y + 1\)</p>
+<p>   (iii) \(x^2 - \frac{y^2}{100}\)</p>
+<p>Polynomials</p>
+<p>4. Expand each of the following, using suitable identities:<br>(i) \((x + 2y + 4z)^2\) <br>(ii) \((2x - y + z)^2\) <br>(iii) \((-2x + 3y + 2z)^2\) <br>(iv) \((3a - 7b - c)^2\) <br>(v) \((-2x + 5y - 3z)^2\) <br>(vi) \(\left[\frac{1}{4} a - \frac{1}{2} b + 1\right]^2\)</p>
+<p>5. Factorise:<br>(i) \(4x^2 + 9y^2 + 16z^2 + 12xy - 24yz - 16xz\) <br>(ii) \(2x^2 + y^2 + 8z^2 - 2\sqrt{2} xy + 4\sqrt{2} yz - 8xz\)</p>
+<p>6. Write the following cubes in expanded form:<br>(i) \((2x + 1)^3\) <br>(ii) \((2a - 3b)^3\) <br>(iii) \(\left[\frac{3}{2} x + 1\right]^3\) <br>(iv) \(\left[x - \frac{2}{3} y\right]^3\)</p>
+<p>7. Evaluate the following using suitable identities:<br>(i) \((99)^3\) <br>(ii) \((102)^3\) <br>(iii) \((998)^3\)</p>
+<p>8. Factorise each of the following:<br>(i) \(8a^3 + b^3 + 12a^2b + 6ab^2\) <br>(ii) \(8a^3 - b^3 - 12a^2b + 6ab^2\) <br>(iii) \(27 - 125a^3 - 135a + 225a^2\) <br>(iv) \(64a^3 - 27b^3 - 144a^2b + 108ab^2\) <br>(v) \(27p^3 - \frac{1}{216} - \frac{9}{2} p^2 + \frac{1}{4} p\)</p>
+<p>9. Verify: <br>(i) \(x^3 + y^3 = (x + y) (x^2 - xy + y^2)\) <br>(ii) \(x^3 - y^3 = (x - y) (x^2 + xy + y^2)\)</p>
+<p>10. Factorise each of the following:<br>(i) \(27y^3 + 125z^3\) <br>(ii) \(64m^3 - 343n^3\) </p>
+<p>[Hint: See Question 9.]</p>
+<p>11. Factorise: \(27x^3 + y^3 + z^3 - 9xyz\)</p>
+<p>12. Verify that \(x^3 + y^3 + z^3 - 3xyz = \frac{1}{2} (x + y + z) \left[(x - y)^2 + (y - z)^2 + (z - x)^2\right]\)</p>
+<p>13. If \(x + y + z = 0\), show that \(x^3 + y^3 + z^3 = 3xyz\).</p>
+<p>14. Without actually calculating the cubes, find the value of each of the following:<br>(i) \((-12)^3 + (7)^3 + (5)^3\) <br>(ii) \((28)^3 + (-15)^3 + (-13)^3\)</p>
+<p>15. Give possible expressions for the length and breadth of each of the following rectangles, in which their areas are given:</p>
+<p>Area: \(25a^2 - 35a + 12\) <br>(i)</p>
+<p>Area: \(35y^2 + 13y - 12\) <br>(ii)</p>
+<p>16. What are the possible expressions for the dimensions of the cuboids whose volumes are given below?</p>
+<p>Volume: \(3x^2 - 12x\)</p>
+<p>Volume: \(12ky^2 + 8ky - 20k\)</p>
+<p>2.6 Summary</p>
+<p>In this chapter, you have studied the following points:</p>
+<p>1. A polynomial \(p(x)\) in one variable \(x\) is an algebraic expression in \(x\) of the form</p>
+<p>\[p(x) = a_nx^n + a_{n-1}x^{n-1} + \ldots + a_2x^2 + a_1x + a_0\]</p>
+<p>where \(a_0, a_1, a_2, \ldots, a_n\) are constants and \(a_n \neq 0\).</p>
+<p>\(a_0, a_1, a_2, \ldots, a_n\) are respectively the coefficients of \(x^0, x, x^2, \ldots, x^n\), and \(n\) is called the degree of the polynomial. Each of \(a_nx^n, a_{n-1}x^{n-1}, \ldots, a_0\), with \(a_n \neq 0\), is called a term of the polynomial \(p(x)\).</p>
+<p>2. A polynomial of one term is called a monomial.</p>
+<p>3. A polynomial of two terms is called a binomial.</p>
+<p>4. A polynomial of three terms is called a trinomial.</p>
+<p>5. A polynomial of degree one is called a linear polynomial.</p>
+<p>6. A polynomial of degree two is called a quadratic polynomial.</p>
+<p>7. A polynomial of degree three is called a cubic polynomial.</p>
+<p>8. A real number ‘\(a\)’ is a zero of a polynomial \(p(x)\) if \(p(a) = 0\). In this case, \(a\) is also called a root of the equation \(p(x) = 0\).</p>
+<p>9. Every linear polynomial in one variable has a unique zero, a non-zero constant polynomial has no zero, and every real number is a zero of the zero polynomial.</p>
+<p>10. Factor Theorem: \(x-a\) is a factor of the polynomial \(p(x)\), if \(p(a) = 0\). Also, if \(x-a\) is a factor of \(p(x)\), then \(p(a) = 0\).</p>
+<p>11. \((x+y+z)^2 = x^2 + y^2 + z^2 + 2xy + 2yz + 2zx\)</p>
+<p>12. \((x+y)^3 = x^3 + y^3 + 3xy(x+y)\)</p>
+<p>13. \((x-y)^3 = x^3 - y^3 - 3xy(x-y)\)</p>
+<p>14. \(x^3 + y^3 + z^3 - 3xyz = (x+y+z)(x^2 + y^2 + z^2 - xy - yz - zx)\)</p>
+</body>
+</html>

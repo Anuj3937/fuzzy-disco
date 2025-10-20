@@ -1,0 +1,50 @@
+﻿1. What is an Algebraic Expression?
+It is a short and simple way to write mathematical ideas and relationships.
+
+Instead of writing long sentences, we use letters (variables) and numbers (constants) along with basic operation signs (+, -, x, ÷).
+
+Example: To say "Shabnam is 3 years older than Aftab," we can write the expression: Shabnam's Age = Aftab's Age + 3.
+
+2. Letters are Variables (Literals)
+The letters we use (like 'x', 'y', or 'n') are called variables or literals.
+
+A variable is a quantity that does not have a fixed value; its value can change.
+
+Think of it as an empty box: you can put any number inside the box.
+
+The numbers (like 3, 5, 8) that have a fixed value are called constants.
+
+3. How to Form Expressions
+Expressions are formed by combining variables and numbers using basic mathematical operations:
+
+Addition (+):
+
+5 more than a number 'x' is written as x + 5.
+
+Subtraction (-):
+
+4 less than a number 'n' is written as n - 4.
+
+Multiplication (x):
+
+8 times a price 'c' is 8 x c. In algebra, we simply write this as 8c. (We usually drop the 'x' sign.)
+
+Pattern Example: If it takes 2 matchsticks to make one 'L' shape, the expression for 'n' L-shapes is 2n.
+
+4. Terms and Simplification
+Terms: An expression is made up of different terms, separated by '+' or '-' signs. In 2l + 2b, the terms are 2l and 2b.
+
+Like Terms: These are terms that have the same variable (e.g., 5c, 3c, 10c are like terms).
+
+Simplifying: We can only add or subtract the like terms to make the expression shorter.
+
+Example: 5c + 3c = 8c.
+
+Unlike Terms: Terms with different variables (like 8c and 11d) cannot be added or simplified.
+
+5. Evaluating an Expression
+To evaluate an expression means to find its final numerical value.
+
+We do this by substituting (putting) a specific number in place of the variable.
+
+Example: If the expression is 5m + 3 and m is 2, you calculate: (5 x 2) + 3 = 13.

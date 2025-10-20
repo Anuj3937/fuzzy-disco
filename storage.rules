@@ -1,0 +1,17 @@
+
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Match any file in the 'uploads' folder
+    match /uploads/{userId}/{allPaths=**} {
+      // Allow write (upload) only if the user is authenticated and the user ID in the path matches their own UID.
+      // This is a basic rule; in a real app, you might also check user roles from Firestore.
+      allow write: if request.auth != null && request.auth.uid == userId;
+
+      // Allow read only if the user is authenticated.
+      // For more granular control, you would check if the user (student/teacher) has rights to the associated test/document.
+      allow read: if request.auth != null;
+    }
+  }
+}

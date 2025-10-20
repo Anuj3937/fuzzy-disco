@@ -1,0 +1,57 @@
+﻿This chapter introduces the basics of how electricity flows and the essential components needed to make it work.
+
+1. What is an Electric Cell and a Battery?
+Electric Cell (or Dry Cell): This is the basic, portable source of electricity. It converts chemical energy into electrical energy.
+
+It has two terminals: a positive terminal (+) and a negative terminal (-).
+
+Battery: When two or more electric cells are connected together, it forms a battery.
+
+For a cell to act as a battery, the positive terminal of one cell must be connected to the negative terminal of the next cell.
+
+2. The Electric Circuit
+An electric circuit is a complete and continuous path for an electric current to flow from one terminal of a cell (or battery) to the other.
+
+Open Circuit (Switch OFF): If there is a break anywhere in the path, the circuit is incomplete, and no current flows. The bulb does not glow.
+
+Closed Circuit (Switch ON): If the path is complete and continuous, current flows from the positive terminal to the negative terminal. The bulb glows.
+
+Components: The main parts of a simple circuit are:
+
+Source: Electric cell or battery.
+
+Load: The device that uses electricity (e.g., a bulb).
+
+Connecting Wires: Used to conduct (carry) the current.
+
+Switch: Used to easily close (ON) or open (OFF) the circuit.
+
+3. Conductors and Insulators
+Materials are classified based on how easily electricity can pass through them.
+
+Conductors: These are materials that allow electric current to pass through them easily. They complete the circuit.
+
+Examples: Most metals like copper, aluminum, and iron.
+
+Insulators: These are materials that do not allow electric current to pass through them. They break the circuit.
+
+Examples: Rubber, plastic, wood, and paper.
+
+Safety Note: Insulating materials like plastic are used to cover electrical wires to prevent shocks.
+
+4. Heating Effect of Electric Current 🔥
+When electric current flows through a wire, the wire gets hot. This is known as the heating effect of electric current.
+
+Principle: The wire offers resistance to the flow of current, and this energy is converted into heat.
+
+Applications (Devices that use this effect):
+
+Electric Heater, Iron, Geyser: These devices use a special high-resistance wire (often an alloy like nichrome) that gets very hot when current passes through it.
+
+Electric Fuse (Safety Device):
+
+A fuse contains a thin wire that has a very low melting point.
+
+If the current in the circuit becomes too high (due to a short circuit or overload), the thin wire melts and breaks the circuit.
+
+This protects household wiring and appliances from damage.

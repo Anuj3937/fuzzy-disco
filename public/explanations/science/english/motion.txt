@@ -1,0 +1,16 @@
+﻿Motion
+
+Motion refers to the change in the position of an object with respect to time and surroundings. It can be described in terms of distance, displacement, speed, velocity, and acceleration. Understanding motion helps us analyze the movement of objects in our daily lives—from moving vehicles to falling objects.
+
+When an object covers equal distances in equal intervals of time, it is said to be in uniform motion. If the distance covered is unequal in equal intervals, it is non-uniform motion. Distance is the total path covered, while displacement is the shortest distance between the initial and final positions. Distance is scalar (has magnitude only), whereas displacement is vector (has both magnitude and direction).
+
+Speed is the rate at which an object moves, and velocity is speed in a given direction. Average speed is the total distance divided by total time, while average velocity is total displacement divided by total time. Acceleration measures how fast velocity changes with time and is given by the formula a = (v - u)/t.
+
+The three equations of motion describe relationships between displacement (s), time (t), velocity (v), initial velocity (u), and acceleration (a):
+1. v = u + at
+2. s = ut + ½at²
+3. v² - u² = 2as
+
+Graphical representation of motion helps visualize speed and acceleration. In a distance-time graph, a straight line indicates uniform motion, while a curved line indicates non-uniform motion. The slope of a velocity-time graph gives acceleration.
+
+Uniform circular motion occurs when an object moves in a circular path at a constant speed, but since its direction changes, it is considered accelerated motion. The study of motion forms the foundation of mechanics and helps us understand principles behind vehicles, sports, and natural phenomena.

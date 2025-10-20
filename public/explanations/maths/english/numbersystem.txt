@@ -1,0 +1,13 @@
+﻿Number Systems
+
+The number system is the foundation of mathematics. It classifies numbers into various categories based on their properties and representation.
+
+Natural numbers (1, 2, 3, …) are the basic counting numbers. When zero is included, we get whole numbers (0, 1, 2, 3, …). Integers include positive and negative whole numbers along with zero (…, -2, -1, 0, 1, 2, …). Rational numbers are numbers that can be expressed in the form p/q, where p and q are integers and q ≠ 0. For example, ½, -3/4, and 7 are rational numbers.
+
+Irrational numbers cannot be written as p/q; their decimal expansion is non-terminating and non-repeating. Examples include √2, π, and √5. When rational and irrational numbers are combined, we get real numbers. Every point on a number line represents a real number, showing that there is no gap between them.
+
+The decimal representation of rational numbers can be of two types—terminating (e.g., 0.5, 2.25) and non-terminating recurring (e.g., 0.333…, 0.142857…). Irrational numbers have non-terminating, non-repeating decimals.
+
+Operations on real numbers follow certain laws: commutative, associative, and distributive. Exponents help simplify expressions with large numbers. For example, aⁿ × aᵐ = aⁿ⁺ᵐ and (aⁿ)ᵐ = aⁿᵐ.
+
+The concept of real numbers helps in understanding roots, powers, and algebraic expressions. It serves as a foundation for algebra, geometry, and higher mathematics.

@@ -1,0 +1,230 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --------------------------------------------------------
+    // 🔹 Helper functions
+    // --------------------------------------------------------
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isRole(role) {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role;
+    }
+
+    // NEW: accept role spelling / casing differences for "parent"
+    function isParent() {
+      let r = get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+      return r == 'parent' || r == 'Parent'; // add more variants if needed
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function isParticipant(docId) {
+      return request.auth.uid in get(/databases/$(database)/documents/chats/$(docId)).data.participants;
+    }
+    
+    function isTeacherForClass(classId) {
+      return get(/databases/$(database)/documents/classes/$(classId)).data.teacherId == request.auth.uid;
+    }
+    
+    function isStudentInClass(classId) {
+      return request.auth.uid in get(/databases/$(database)/documents/classes/$(classId)).data.studentIds;
+    }
+
+    // ✅ allow parent to read a child's records only if linked
+    function isLinkedParentOf(studentUid) {
+      return isSignedIn() &&
+             isParent() && // ← use case-tolerant parent check
+             studentUid != null && // guard against null
+             exists(/databases/$(database)/documents/parents/$(request.auth.uid)/children/$(studentUid));
+    }
+
+    // --------------------------------------------------------
+    // 🔹 USERS COLLECTION
+    // --------------------------------------------------------
+    match /users/{userId} {
+      allow read: if isSignedIn();
+      allow create: if isRole('admin'); // Only admins can create user profiles
+      allow update: if isRole('admin') || isOwner(userId); // Admins or the user themselves can update
+      allow delete: if isRole('admin'); // Only admins can delete user profiles
+    }
+
+    // --------------------------------------------------------
+    // 🔹 CLASSES COLLECTION
+    // --------------------------------------------------------
+    match /classes/{classId} {
+      allow read: if isSignedIn(); // All signed-in users can see class lists
+      allow create, update, delete: if isRole('admin'); // Only admins can manage classes
+    }
+
+    // --------------------------------------------------------
+    // 🔹 TESTS COLLECTION
+    // --------------------------------------------------------
+    match /tests/{testId} {
+      allow read: if (isRole('teacher') && isTeacherForClass(resource.data.classId))
+                    || (isRole('student') && isStudentInClass(resource.data.classId));
+      allow create: if isRole('teacher'); // Any teacher can create a test (draft)
+      allow update, delete: if isRole('teacher') && resource.data.createdBy == request.auth.uid;
+    }
+
+    // --------------------------------------------------------
+    // 🔹 SUBMISSIONS COLLECTION
+    // --------------------------------------------------------
+    match /submissions/{submissionId} {
+      allow read: if isOwner(resource.data.studentId)
+                    || (isRole('teacher') && isTeacherForClass(resource.data.classId));
+      allow create: if isRole('student') && isOwner(request.resource.data.studentId);
+      allow update: if isOwner(resource.data.studentId); // A student can update their own answers
+      allow delete: if false; // Submissions should not be deletable
+    }
+
+    // --------------------------------------------------------
+    // 🔹 CHATS COLLECTION
+    // --------------------------------------------------------
+    match /chats/{chatId} {
+      allow read, write: if isParticipant(chatId);
+
+      match /messages/{messageId} {
+        allow read, create: if isParticipant(chatId);
+      }
+    }
+
+    // --------------------------------------------------------
+    // 🔹 CALLS COLLECTION
+    // --------------------------------------------------------
+    match /calls/{callId} {
+      allow read, write, delete: if isSignedIn()
+        && request.auth.uid in resource.data.participants;
+    }
+
+    // --------------------------------------------------------
+    // 🔹 PARENTS → CHILDREN (New Collection)
+    // Structure: parents/{parentUid}/children/{childUid}
+    // --------------------------------------------------------
+    match /parents/{parentUid}/children/{childUid} {
+
+      // ✅ Parent can view their own linked children
+      allow read: if isSignedIn() && request.auth.uid == parentUid;
+
+      // ✅ Parent can create or update links for themselves
+      allow create, update: if isSignedIn() && request.auth.uid == parentUid
+        && request.resource.data.childUid == childUid;
+
+      // ❌ No one can delete a link except the same parent (optional)
+      allow delete: if isSignedIn() && request.auth.uid == parentUid;
+    }
+
+    // --------------------------------------------------------
+    // 🔹 Activity Collections (Parents can read if linked)
+    //    Support BOTH studentId and studentID field names.
+    // --------------------------------------------------------
+
+    // Chapters Read → contentReads (kind = 'ebook' is filtered client-side)
+    match /contentReads/{docId} {
+      allow read: if
+        // student can read their own
+        (isSignedIn() && (isOwner(resource.data.studentId) || isOwner(resource.data.studentID)))
+        ||
+        // linked parent can read
+        isLinkedParentOf(resource.data.studentId) ||
+        isLinkedParentOf(resource.data.studentID);
+    }
+
+    // Quiz Taken → quizAttempts
+    match /quizAttempts/{docId} {
+      allow read: if
+        (isSignedIn() && (isOwner(resource.data.studentId) || isOwner(resource.data.studentID)))
+        ||
+        isLinkedParentOf(resource.data.studentId) ||
+        isLinkedParentOf(resource.data.studentID);
+    }
+
+    // Teacher's Test → community_test_answers
+    match /community_test_answers/{docId} {
+      allow read: if
+        (isSignedIn() && (isOwner(resource.data.studentId) || isOwner(resource.data.studentID)))
+        ||
+        isLinkedParentOf(resource.data.studentId) ||
+        isLinkedParentOf(resource.data.studentID);
+    }
+
+    // --------------------------------------------------------
+    // 🔹 DOUBTS COLLECTION (💬 Ask Teacher)
+    // Structure:
+    // /doubts/{doubtId}
+    // /doubts/{doubtId}/messages/{messageId}
+    // --------------------------------------------------------
+    match /doubts/{doubtId} {
+
+      // Helper to read parent doubt data safely
+      function _doubt() {
+        return get(/databases/$(database)/documents/doubts/$(doubtId)).data;
+      }
+
+      // ✅ Read:
+      // - student who asked
+      // - assigned teacher
+      // - admin
+      allow read: if isSignedIn() && (
+        request.auth.uid == resource.data.studentId ||
+        (resource.data.assignedTo != null && request.auth.uid == resource.data.assignedTo) ||
+        isRole('admin')
+      );
+
+      // ✅ Create: only the student for themselves
+      allow create: if isSignedIn() && isRole('student') &&
+        request.auth.uid == request.resource.data.studentId;
+
+      // ✅ Update:
+      // - admin
+      // - assigned teacher
+      // - OR teacher claiming an unassigned doubt (set assignedTo = self)
+      // - (optionally) student can edit their own doubt before any assignment; remove this if not desired
+      allow update: if isSignedIn() && (
+        isRole('admin') ||
+        (resource.data.assignedTo != null && request.auth.uid == resource.data.assignedTo) ||
+        (
+          isRole('teacher') &&
+          resource.data.assignedTo == null &&
+          request.resource.data.assignedTo == request.auth.uid
+        ) ||
+        (
+          isRole('student') &&
+          request.auth.uid == resource.data.studentId &&
+          resource.data.assignedTo == null
+        )
+      );
+
+      // ❌ Delete: nobody should delete doubts
+      allow delete: if false;
+
+      // 🔹 Subcollection: messages
+      match /messages/{messageId} {
+        // ✅ Read: student, assigned teacher, admin
+        allow read: if isSignedIn() && (
+          request.auth.uid == _doubt().studentId ||
+          ( _doubt().assignedTo != null && request.auth.uid == _doubt().assignedTo ) ||
+          isRole('admin')
+        );
+
+        // ✅ Create:
+        // - student who owns the doubt
+        // - assigned teacher replying
+        // (We rely on the transaction that claims the doubt before first teacher message)
+        allow create: if isSignedIn() && (
+          (isRole('student') && request.auth.uid == _doubt().studentId) ||
+          (isRole('teacher') && _doubt().assignedTo != null && request.auth.uid == _doubt().assignedTo) ||
+          isRole('admin')
+        );
+
+        // ❌ No updates/deletes for messages
+        allow update, delete: if false;
+      }
+    }
+  }
+}

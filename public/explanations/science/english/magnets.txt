@@ -1,0 +1,11 @@
+Pressure, Wind, Cyclones and Storms
+
+Air pressure is the weight of the air column on the Earth's surface. It varies from place to place due to temperature differences. Warm air is light and creates low pressure, while cold air is heavy and creates high pressure. Air moves from high to low pressure areas, forming winds.
+
+The rotation of the Earth affects wind direction (Coriolis effect). In the Northern Hemisphere, winds deflect to the right and in the Southern Hemisphere, to the left. Winds around low pressure move anti-clockwise in the north and clockwise in the south.
+
+Cyclones are strong low-pressure systems with spiraling winds and heavy rain. Tropical cyclones form over warm oceans when moist air rises, creating a low-pressure center. These can cause great damage through strong winds and storm surges.
+
+Thunderstorms and storms occur when warm air rises rapidly, leading to lightning and heavy rainfall. Monsoons are seasonal winds that bring rain in summer and dry conditions in winter due to differential heating of land and sea.
+
+Understanding air pressure and winds helps in weather forecasting and disaster preparedness, reducing the damage caused by cyclones and storms.

@@ -1,0 +1,16 @@
+﻿Coordinate Geometry
+
+Coordinate geometry, or Cartesian geometry, combines algebra and geometry to locate points and analyze shapes on a plane using ordered pairs (x, y). The concept was introduced by René Descartes, who used the idea of coordinates to describe geometric figures algebraically.
+
+The coordinate plane has two perpendicular lines—the x-axis (horizontal) and y-axis (vertical)—intersecting at the origin (0, 0). Each point in the plane is represented by an ordered pair (x, y), where x denotes the distance from the y-axis and y denotes the distance from the x-axis. The plane is divided into four quadrants with specific sign conventions.
+
+The distance formula calculates the distance between two points (x₁, y₁) and (x₂, y₂):
+Distance = √[(x₂ - x₁)² + (y₂ - y₁)²]
+
+The midpoint formula gives the coordinates of the point dividing a line segment in half:
+Midpoint = ((x₁ + x₂)/2, (y₁ + y₂)/2)
+
+The section formula helps find a point dividing a line in a given ratio m:n:
+((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n))
+
+Coordinate geometry is used in map-making, physics, engineering, and computer graphics. It helps in analyzing motion, locating positions, and understanding the shapes of curves. The study of coordinate geometry provides the foundation for analytical geometry, which connects visual representation with algebraic equations.

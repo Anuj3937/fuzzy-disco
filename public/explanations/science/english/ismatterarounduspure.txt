@@ -1,0 +1,13 @@
+﻿Matter in Our Surroundings
+
+Everything around us is made up of matter—whether solid, liquid, or gas. Matter has mass, occupies space, and is composed of tiny particles. These particles are in constant motion and attract each other through intermolecular forces.
+
+Solids have fixed shape and volume, with closely packed particles vibrating in place. Liquids have definite volume but take the shape of their container because particles can move freely while remaining close. Gases have neither fixed shape nor volume; their particles move rapidly and occupy all available space.
+
+The physical state of matter depends on temperature and pressure. Increasing temperature adds energy, reducing intermolecular attraction and leading to changes of state. For example, heating ice converts it to water (melting) and then to vapor (evaporation). Cooling has the opposite effect—condensation and freezing.
+
+Sublimation is the direct conversion of solid to gas without becoming liquid, as seen in camphor or naphthalene. Evaporation causes cooling because it uses heat energy from surroundings to change liquid into vapor. Factors affecting evaporation include temperature, surface area, humidity, and wind speed.
+
+Latent heat plays a key role in phase changes. Latent heat of fusion is the heat required to convert solid into liquid without temperature change, while latent heat of vaporization converts liquid into gas.
+
+The particle theory of matter explains diffusion—the process by which particles of two substances mix due to motion. This explains everyday phenomena like the spreading of fragrance, formation of clouds, and cooling effect of sweating. Matter’s behavior depends on how particles are arranged and how strongly they attract each other.

@@ -1,0 +1,15 @@
+﻿Polynomials
+
+A polynomial is an algebraic expression consisting of variables, coefficients, and exponents connected by addition, subtraction, or multiplication. It is one of the most important concepts in algebra and is used extensively in solving equations and modeling real-world problems.
+
+The degree of a polynomial is the highest power of the variable in the expression. Based on degree, polynomials are classified as:
+- Constant polynomial: degree 0 (e.g., 7)
+- Linear polynomial: degree 1 (e.g., 2x + 3)
+- Quadratic polynomial: degree 2 (e.g., x² + 5x + 6)
+- Cubic polynomial: degree 3 (e.g., x³ + 2x² + x + 1)
+
+The zeroes of a polynomial are values of x for which the polynomial equals zero. For example, for p(x) = x² - 4, the zeroes are +2 and -2. The relationship between zeroes and coefficients for a quadratic polynomial ax² + bx + c is: α + β = -b/a and αβ = c/a.
+
+Polynomials can be represented graphically, where the x-intercepts correspond to the zeroes of the polynomial. Linear polynomials form straight lines, quadratic ones form parabolas, and cubic ones form curves with inflection points.
+
+Polynomials can be added, subtracted, or multiplied easily, but division may leave a remainder. The Remainder Theorem and Factor Theorem help in factorizing polynomials efficiently. Understanding polynomials lays the groundwork for algebraic manipulation, equations, and higher-level functions.

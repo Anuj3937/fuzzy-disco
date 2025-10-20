@@ -1,0 +1,151 @@
+﻿1. Multiplying a Whole Number by a Fraction
+This is like repeated addition.
+
+
+Concept: Multiplying a whole number (like 3) by a fraction (like  
+4
+1
+​
+ ) is the same as adding the fraction to itself that many times.
+
+
+Example: Distance covered in 3 hours at  
+4
+1
+​
+  km/hr is: 3× 
+4
+1
+​
+ = 
+4
+1
+​
+ + 
+4
+1
+​
+ + 
+4
+1
+​
+ = 
+4
+3
+​
+  km.
+
+
+The Rule: To multiply a fraction by a whole number, you only multiply the numerator (top number) by the whole number, and the denominator (bottom number) remains the same.
+
+Formula: Whole Number × 
+Denominator
+Numerator
+​
+ = 
+Denominator
+Whole Number×Numerator
+​
+ 
+
+2. Multiplying a Fraction by a Fraction
+When you multiply two fractions, you are finding a "fraction of a fraction."
+
+
+Concept: Multiplying  
+2
+1
+​
+  by  
+4
+1
+​
+  means finding  
+2
+1
+​
+  of  
+4
+1
+​
+ .
+
+If you divide  
+4
+1
+​
+  into two equal parts, each part is  
+8
+1
+​
+ .
+
+
+Result:  
+2
+1
+​
+ × 
+4
+1
+​
+ = 
+8
+1
+​
+ .
+
+
+The Simple Rule (The Rule of Products): To multiply any two fractions, follow these two steps:
+
+Multiply the numerators together.
+
+Multiply the denominators together.
+
+
+Formula:  
+b
+a
+​
+ × 
+d
+c
+​
+ = 
+b×d
+a×c
+​
+ .
+
+3. Key Concepts for Calculation
+
+Mixed Fractions: If a number is a mixed fraction (like 1 
+4
+1
+​
+ ), you must first convert it into an improper fraction (like  
+4
+5
+​
+ ) before you can multiply it.
+
+
+
+Area Model: The product (answer) of multiplying two fractions can be seen as the area of a rectangle whose sides are equal to the two fractions.
+
+
+
+Simplifying (Cancelling): It is often easier to simplify the fractions before you multiply them.
+
+You can divide any numerator and any denominator by their common factor. This process is called "cancelling."
+
+
+Example: In  
+7
+12
+​
+ × 
+24
+5
+​
+ , you can divide 12 (numerator) and 24 (denominator) by their common factor 12 to make the calculation simpler.

@@ -1,0 +1,13 @@
+﻿Cell: The Fundamental Unit of Life
+
+Every living organism, from the simplest bacterium to the most complex human being, is made up of cells. The cell is the basic structural and functional unit of life. It is the smallest unit capable of performing all life processes such as growth, reproduction, and response to stimuli.
+
+The discovery of the cell was made by Robert Hooke in 1665, who observed cork cells under a microscope. Later, scientists like Leeuwenhoek, Schleiden, Schwann, and Virchow contributed to the development of the cell theory. This theory states that all living organisms are made of cells, the cell is the basic unit of life, and new cells arise from pre-existing cells.
+
+Cells vary greatly in shape, size, and function. A single-celled organism like Amoeba performs all necessary functions within one cell, while multicellular organisms have specialized cells for different tasks. For example, nerve cells transmit messages, muscle cells help in movement, and red blood cells transport oxygen.
+
+The main parts of a cell are the plasma membrane, cytoplasm, and nucleus. The plasma membrane is a selectively permeable membrane that controls the movement of materials in and out of the cell. The cytoplasm is a jelly-like substance where organelles such as mitochondria, endoplasmic reticulum, Golgi apparatus, lysosomes, and ribosomes are suspended. The nucleus contains the genetic material DNA, which controls cell activities and passes on hereditary information.
+
+Plant and animal cells have some differences. Plant cells have a cell wall made of cellulose, chloroplasts for photosynthesis, and a large vacuole. Animal cells lack a cell wall and chloroplasts but have smaller vacuoles.
+
+Cell division is vital for growth and reproduction. Mitosis produces identical cells for growth and repair, while meiosis forms gametes for sexual reproduction. Understanding cells helps us comprehend how living organisms function, maintain life, and adapt to their environment.
